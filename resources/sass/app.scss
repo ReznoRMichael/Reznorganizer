@@ -1,8 +1,24 @@
+@tailwind base;
+
+@tailwind components;
+
+.button {
+    @apply .bg-orange-600 .text-white .px-5 .py-2 .rounded-lg .shadow ;
+}
+.button:hover {
+    @apply .bg-orange-700;
+}
+.card {
+    @apply .bg-white .p-5 .rounded-lg .shadow ;
+}
+
+@tailwind utilities;
+
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
