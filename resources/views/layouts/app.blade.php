@@ -27,7 +27,7 @@
                 <div class="flex justify-between items-center py-4">
                     
                     <h1>
-                        <a class="navbar-brand" href="{{ url('/') }}">
+                        <a class="navbar-brand" href="{{ url('/projects') }}">
                             <img src="/svg/reznorganizer-logo.svg" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
                         </a>
                     </h1>

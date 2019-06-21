@@ -40,6 +40,8 @@ class User extends Authenticatable
     public function projects()
     {
         // make sure you specify the owner_id instead of the default user_id
-        return $this->hasMany(Project::class, 'owner_id');
+        // view all projects ordered by the updated_at timestamp in the database
+        // use also: orderBy('updated_at', 'desc') or orderByDesc('updated_at')
+        return $this->hasMany(Project::class, 'owner_id')->latest('updated_at');
     }
 }

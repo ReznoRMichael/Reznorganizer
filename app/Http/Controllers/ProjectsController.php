@@ -37,17 +37,18 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        // validate - the title is required
+        // validate
         $attributes = $request -> validate([
             'title' => 'required',
-            'description' => 'required'
-            ]);
+            'description' => 'required',
+            'notes' => 'max:255'
+        ]);
 
         // persist
-        auth() -> user() -> projects() -> create($attributes);
+        $project = auth() -> user() -> projects() -> create($attributes);
 
         // redirect
-        return redirect('projects');
+        return redirect( $project->path() );
     }
 
     /**
@@ -61,10 +62,7 @@ class ProjectsController extends Controller
         // Project $project is the route model binding for the {project} wildcard to find the id of the project quicker
 
         // don't allow users view other users' projects
-        if( auth()->user()->isNot($project->owner) )
-        {
-            abort(403);
-        }
+        $this->authorize('update', $project);
 
         return view('projects.show', compact('project'));
     }
@@ -89,7 +87,18 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        // don't allow users update other users' projects
+        $this->authorize('update', $project);
+
+        $attributes = $request -> validate([
+            'title' => 'required',
+            'description' => 'required',
+            'notes' => 'max:255'
+        ]);
+
+        $project->update( $attributes );
+
+        return redirect($project->path());
     }
 
     /**
