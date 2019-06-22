@@ -3,11 +3,13 @@
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
 use App\Task;
+use App\Project;
 use Faker\Generator as Faker;
 
 $factory->define(Task::class, function (Faker $faker) {
     return [
-        'body' => $faker->paragraph(4),
-        'project_id' => factory(\App\Project::class)
+        'body' => $faker->sentence,
+        'project_id' => factory(Project::class),
+        'completed' => false
     ];
 });

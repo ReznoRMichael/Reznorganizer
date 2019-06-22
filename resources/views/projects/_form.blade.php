@@ -1,13 +1,13 @@
 @csrf
 
 <div class="field mb-6">
-    <label class="label text-lg mb-2 block" for="title">Note Title</label>
+    <label class="label text-lg mb-2 block" for="title">Title</label>
     <div class="control">
 
         <input type="text"
             class="input bg-transparent border border-muted-light rounded p-2 w-full"
             name="title"
-            placeholder="What do you want to create?"
+            placeholder="Create anything: to-do list, recipe, instruction, note..."
             value="{{ $project->title }}"
             required>
 
@@ -15,13 +15,13 @@
 </div>
 
 <div class="field mb-6">
-    <label class="label text-lg mb-2 block" for="description">Note Description</label>
+    <label class="label text-lg mb-2 block" for="description">Description</label>
     <div class="control">
 
         <textarea
             class="textarea bg-transparent border border-muted-light rounded p-2 mb-4 w-full"
             name="description"
-            placeholder="Add a brief description of your Note"
+            placeholder="Add a brief description for your to-do list, recipe, instruction, note..."
             rows="10"
             required>{{ $descriptionText }}</textarea>
 
@@ -37,12 +37,4 @@
     </div>
 </div>
 
-@if($errors->any())
-<div class="field">
-    
-    @foreach($errors->all() as $error)
-        <div class="text-sm text-orange-600">{{ $error }}</div>
-    @endforeach
-
-</div>
-@endif
+@include('projects._errors')

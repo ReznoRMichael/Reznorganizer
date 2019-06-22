@@ -50,6 +50,9 @@
                     @csrf
                     <textarea name="notes" class="card w-full mb-4" style="min-height: 200px;" placeholder="Add more information here...">{{ $project->notes }}</textarea>
                     <button type="submit" class="button">Save Note</button>
+
+                    @include('projects._errors')
+
                 </form>
             </div>
 
@@ -59,6 +62,8 @@
         <div class="lg:w-1/4 px-3 lg:mt-10">
 
             @include('projects.card')
+
+            @include('projects.activity.card')
 
         </div>
 

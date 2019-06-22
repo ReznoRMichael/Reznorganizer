@@ -1,0 +1,1 @@
+You have uncompleted "{{ $activity->subject->body }}"

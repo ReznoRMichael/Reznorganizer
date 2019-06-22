@@ -102,9 +102,9 @@ class ProjectsController extends Controller
     public function validateRequest()
     {
         return request() -> validate([
-            'title' => 'required',
-            'description' => 'required',
-            'notes' => 'max:2000'
+            'title' => 'sometimes|required',
+            'description' => 'sometimes|required',
+            'notes' => 'nullable'
         ]);
     }
 }
