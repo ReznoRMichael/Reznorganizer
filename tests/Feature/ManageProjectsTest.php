@@ -24,6 +24,7 @@ class ManageProjectsTest extends TestCase
         // make sure that a guest is always redirected if not signed in
         $this -> get('/projects') -> assertRedirect('login');
         $this -> get('/projects/create') -> assertRedirect('login');
+        $this -> get($project->path().'/edit') -> assertRedirect('login');
         $this -> get($project->path()) -> assertRedirect('login');
         $this -> post('/projects', $project->toArray()) -> assertRedirect('login');
     }
@@ -64,8 +65,10 @@ class ManageProjectsTest extends TestCase
         $project = ProjectFactory::create();
 
         $this->actingAs($project->owner)
-             ->patch($project->path(), $attributes = ['title' => 'Changed', 'notes' => 'Changed'])
+             ->patch($project->path(), $attributes = ['title' => 'Changed', 'description' => 'Changed', 'notes' => 'Changed'])
              ->assertRedirect($project->path());
+
+        $this -> get($project->path().'/edit') -> assertOk();
 
         $this->assertDatabaseHas('projects', $attributes);
     }

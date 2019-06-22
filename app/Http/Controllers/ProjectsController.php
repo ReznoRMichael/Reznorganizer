@@ -35,17 +35,10 @@ class ProjectsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        // validate
-        $attributes = $request -> validate([
-            'title' => 'required',
-            'description' => 'required',
-            'notes' => 'max:255'
-        ]);
-
-        // persist
-        $project = auth() -> user() -> projects() -> create($attributes);
+        // validate and persist
+        $project = auth() -> user() -> projects() -> create( $this->validateRequest() );
 
         // redirect
         return redirect( $project->path() );
@@ -75,7 +68,7 @@ class ProjectsController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -90,13 +83,7 @@ class ProjectsController extends Controller
         // don't allow users update other users' projects
         $this->authorize('update', $project);
 
-        $attributes = $request -> validate([
-            'title' => 'required',
-            'description' => 'required',
-            'notes' => 'max:255'
-        ]);
-
-        $project->update( $attributes );
+        $project->update( $this->validateRequest() );
 
         return redirect($project->path());
     }
@@ -110,5 +97,14 @@ class ProjectsController extends Controller
     public function destroy(Project $project)
     {
         //
+    }
+
+    public function validateRequest()
+    {
+        return request() -> validate([
+            'title' => 'required',
+            'description' => 'required',
+            'notes' => 'max:2000'
+        ]);
     }
 }

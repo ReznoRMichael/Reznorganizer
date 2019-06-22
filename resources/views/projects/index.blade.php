@@ -5,8 +5,8 @@
 <header class="flex items-center">
 
     <div class="flex justify-between items-end w-full">
-        <h2 class="text-gray-600 no-underline text-normal">My Projects</h2>
-        <a href="/projects/create" class="button">Add Project</a>
+        <h2 class="text-gray-600 no-underline text-normal">My Notes</h2>
+        <a href="/projects/create" class="button">Add Note</a>
     </div>
 
 </header>
@@ -20,7 +20,7 @@
     </div>
 
     @empty
-        <div class="text-gray-500">It's quite empty here. Want to add a project?</div>
+        <div class="text-gray-500">It's quite empty here. Want to add a note?</div>
     @endforelse
 
 </main>

@@ -6,9 +6,9 @@
 
     <div class="flex justify-between items-end w-full">
         <p class="text-gray-600 no-underline text-normal">
-            <a href="/projects" class="text-gray-600 no-underline text-normal">My Projects</a> / {{ $project->title }}
+            <a href="/projects" class="text-gray-600 no-underline text-normal">My Notes</a> / {{ $project->title }}
         </p>
-        <a href="/projects/create" class="button">Add Project</a>
+        <a href="{{ $project->path().'/edit' }}" class="button">Edit Note</a>
     </div>
 
 </header>
@@ -20,7 +20,7 @@
         <div class="lg:w-3/4 px-3 mb-6">
 
             <div class="mb-8">
-                <h2 class="text-gray-600 no-underline text-xl mb-3">Tasks</h2>
+                <h2 class="text-gray-600 no-underline text-xl mb-3">To Do List</h2>
 
                 {{-- tasks --}}
                 @foreach($project->tasks as $task)
@@ -42,14 +42,14 @@
             </div>
     
             <div class="mb-8">
-                <h2 class="text-gray-600 no-underline text-xl mb-3">General Notes</h2>
+                <h2 class="text-gray-600 no-underline text-xl mb-3">Additional info</h2>
     
                 {{-- general notes --}}
                 <form action="{{ $project->path() }}" method="post">
                     @method('PATCH')
                     @csrf
-                    <textarea name="notes" class="card w-full mb-4" style="min-height: 200px;" placeholder="Add notes here...">{{ $project->notes }}</textarea>
-                    <button type="submit" class="button">Save</button>
+                    <textarea name="notes" class="card w-full mb-4" style="min-height: 200px;" placeholder="Add more information here...">{{ $project->notes }}</textarea>
+                    <button type="submit" class="button">Save Note</button>
                 </form>
             </div>
 
