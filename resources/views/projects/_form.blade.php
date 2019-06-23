@@ -31,10 +31,10 @@
 
 <div class="field mb-6">
     <div class="control">
-        <button type="submit" class="button mr-2">{{ $buttonText }}</button>
+        <button type="submit" class="button rt-orange mr-2">{{ $buttonText }}</button>
 
-        <a class="button" href="{{ $project->path() }}">Cancel</a>
+        <a class="button btn-gray" href="{{ $project->path() }}">Cancel</a>
     </div>
 </div>
 
-@include('projects._errors')
+@include('_errors')

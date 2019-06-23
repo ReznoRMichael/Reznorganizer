@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+    use RecordsActivity;
+
     protected $guarded = [];
 
     // set this to also update the parent project timestamp, not only the task itself
@@ -16,6 +18,8 @@ class Task extends Model
     protected $casts = [
         'completed' => 'boolean'
     ];
+
+    protected static $recordableEvents = ['created', 'deleted'];
 
     public function complete()
     {
@@ -41,23 +45,4 @@ class Task extends Model
         return "/projects/{$this->project->id}/tasks/{$this->id}";
     }
 
-    public function activity()
-    {
-        return $this->morphMany(Activity::class, 'subject')->latest();
-    }
-
-    /**
-     * Let's generate some activity associated with the project
-     *
-     * @param  \App\Activity  $description
-     * @return void
-     */
-    public function recordActivity($description)
-    {
-        // only the description is needed, the project_id is provided automatically
-        $this->activity()->create([
-            'project_id' => $this->project_id,
-            'description' => $description
-        ]);
-    }
 }

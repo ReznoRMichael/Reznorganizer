@@ -6,9 +6,9 @@
 
     <div class="flex justify-between items-end w-full">
         <p class="text-gray-600 no-underline text-normal">
-            <a href="/projects" class="text-gray-600 no-underline text-normal">My Notes</a> / {{ $project->title }}
+            <a href="/projects" class="text-gray-600 no-underline text-normal">My Entries</a> / {{ $project->title }}
         </p>
-        <a href="{{ $project->path().'/edit' }}" class="button">Edit Note</a>
+        <a href="{{ $project->path().'/edit' }}" class="button rt-orange">Edit Entry</a>
     </div>
 
 </header>
@@ -49,9 +49,9 @@
                     @method('PATCH')
                     @csrf
                     <textarea name="notes" class="card w-full mb-4" style="min-height: 200px;" placeholder="Add more information here...">{{ $project->notes }}</textarea>
-                    <button type="submit" class="button">Save Note</button>
+                    <button type="submit" class="button rt-orange">Save Entry</button>
 
-                    @include('projects._errors')
+                    @include('_errors')
 
                 </form>
             </div>

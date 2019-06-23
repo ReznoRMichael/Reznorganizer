@@ -9,7 +9,7 @@
     <form method="POST" action="/projects">
 
         @include('projects._form', [
-            'buttonText' => 'Create Note',
+            'buttonText' => 'Create Entry',
             'descriptionText' => '',
             'project' => new App\Project
         ])

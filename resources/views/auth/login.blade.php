@@ -47,8 +47,8 @@
         </div>
 
         <div class="field mb-6">
-            <div class="col-md-8 offset-md-4">
-                <button type="submit" class="button mr-2">
+            <div>
+                <button type="submit" class="button rt-orange mr-2">
                     Login
                 </button>
 
@@ -59,5 +59,8 @@
                 @endif
             </div>
         </div>
+
+        @include('_errors')
+
     </form>
 @endsection

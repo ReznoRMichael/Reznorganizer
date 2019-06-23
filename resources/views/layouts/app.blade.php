@@ -26,35 +26,40 @@
 
                 <div class="flex justify-between items-center py-4">
                     
-                    <h1>
-                        <a class="navbar-brand" href="{{ url('/projects') }}">
-                            <img src="/svg/reznorganizer-logo.svg" alt="{{ config('app.name') }}" title="{{ config('app.name') }}">
+                    <h1 class="text-lg">
+                        <a class="flex navbar-brand items-center" href="{{ url('/projects') }}">
+                            <img src="/svg/reznorganizer-logo.svg" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" class="mr-2">
+                            @guest
+                                <strong><p class="reznor-logo">rezno[R]<span class="text-orange-600">ganizer</span></p></strong>
+                            @else
+                                <strong><p class="reznor-logo">{{ strtolower(Auth::user()->name) }}[S]<span class="text-orange-600">organizer</span></p></strong>
+                            @endguest
                         </a>
                     </h1>
     
                     <div>
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
+                        <ul>
                             <!-- Authentication Links -->
                             @guest
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <li>
+                                    <a href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                                 @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <li>
+                                        <a href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </li>
                                 @endif
                             @else
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                <li>
+                                    <a href="{{ route('projects.index') }}">
+                                        {{ Auth::user()->name }}
                                     </a>
     
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <div>
+                                        <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
+                                            document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
     

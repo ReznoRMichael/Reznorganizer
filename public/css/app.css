@@ -622,7 +622,6 @@ video {
 }
 
 .button {
-  background-color: #ff6600;
   color: #fff;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -632,8 +631,21 @@ video {
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
 }
 
-.button:hover {
+.rt-orange {
+  background-color: #ff6600;
+}
+
+.rt-orange:hover {
   background-color: #c05621;
+}
+
+.btn-gray {
+  background-color: #cbd5e0;
+  color: #000;
+}
+
+.btn-gray:hover {
+  background-color: #a0aec0;
 }
 
 .card {
@@ -641,6 +653,12 @@ video {
   padding: 1.25rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.08);
+}
+
+.reznor-logo {
+  font-family: Consolas, monospace;
+  color: #808080;
+  letter-spacing: 0.1rem;
 }
 
 .appearance-none {

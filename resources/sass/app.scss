@@ -2,14 +2,16 @@
 
 @tailwind components;
 
-.button {
-    @apply .bg-orange-600 .text-white .px-5 .py-2 .rounded-lg .shadow ;
-}
-.button:hover {
-    @apply .bg-orange-700;
-}
-.card {
-    @apply .bg-white .p-5 .rounded-lg .shadow ;
+.button { @apply .text-white .px-5 .py-2 .rounded-lg .shadow ; }
+.rt-orange { @apply .bg-orange-600 ; }
+.rt-orange:hover { @apply .bg-orange-700 ; }
+.btn-gray { @apply .bg-gray-400 .text-black ; }
+.btn-gray:hover { @apply .bg-gray-500 }
+.card { @apply .bg-white .p-5 .rounded-lg .shadow ; }
+.reznor-logo {
+    font-family: Consolas, monospace;
+    color: #808080;
+    letter-spacing: .1rem;
 }
 
 @tailwind utilities;
