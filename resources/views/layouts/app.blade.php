@@ -39,24 +39,26 @@
     
                     <div>
                         <!-- Right Side Of Navbar -->
-                        <ul>
+
                             <!-- Authentication Links -->
                             @guest
-                                <li>
+                                <div>
                                     <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
+                                </div>
                                 @if (Route::has('register'))
-                                    <li>
+                                    <div>
                                         <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                                    </li>
+                                    </div>
                                 @endif
                             @else
-                                <li>
-                                    <a href="{{ route('projects.index') }}">
-                                        {{ Auth::user()->name }}
-                                    </a>
-    
+                                <div class="text-right">
                                     <div>
+                                        <a href="{{ route('projects.index') }}">
+                                            <strong>{{ ucwords(Auth::user()->name) }}</strong>
+                                        </a>
+                                    </div>
+    
+                                    <div class="text-gray-500">
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
@@ -67,9 +69,9 @@
                                             @csrf
                                         </form>
                                     </div>
-                                </li>
+                                </div>
                             @endguest
-                        </ul>
+
                     </div>
                 </div>
 

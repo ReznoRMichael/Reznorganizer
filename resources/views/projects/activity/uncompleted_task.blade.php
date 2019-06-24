@@ -1,1 +1,1 @@
-{{ $activity->user->name }} uncompleted "{{ $activity->subject->body }}"
+{{ $activity->user->name }} unchecked "{{ $activity->subject->body }}"

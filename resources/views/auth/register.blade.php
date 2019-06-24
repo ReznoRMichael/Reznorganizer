@@ -60,8 +60,11 @@
 
     <div class="field">
         <div class="control">
-            <button type="submit" class="button is-link mr-2">Register</button>
+            <button type="submit" class="button rt-orange mr-2">Register</button>
         </div>
     </div>
+
+    @include('_errors')
+
 </form>
 @endsection
