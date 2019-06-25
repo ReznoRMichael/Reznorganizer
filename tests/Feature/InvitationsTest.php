@@ -13,12 +13,12 @@ class InvitationsTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function a_project_owner_can_invite_a_user()
+    function a_project_owner_can_invite_a_user()
     {
         $project = ProjectFactory::create();
         $userToInvite = factory(User::class)->create();
 
-        $this->actingAs($project->owner)->post( $project->path().'/invitations', [
+        $this->actingAs($project->owner)->post( action('ProjectInvitationsController@store', $project), [
                 'email' => $userToInvite->email
             ])
             ->assertRedirect( $project->path() );
@@ -27,33 +27,41 @@ class InvitationsTest extends TestCase
     }
 
     /** @test */
-    public function non_owners_may_not_invite_users()
+    function non_owners_may_not_invite_users()
     {
         $project = ProjectFactory::create();
         $user = factory(User::class)->create();
 
-        $this->actingAs($user)
-            ->post( $project->path().'/invitations' )
-            ->assertStatus(403);
+        $assertInvitationForbidden = function () use ($user, $project) {
+            $this->actingAs($user)
+                ->post( action('ProjectInvitationsController@store', $project) )
+                ->assertStatus(403);
+        };
+
+        $assertInvitationForbidden();
+        //after the same user has been invited to the project
+        $project->invite($user);
+        //they cannot invite other users
+        $assertInvitationForbidden();
     }
 
     /** @test */
-    public function the_email_address_must_be_associated_with_a_valid_reznorganizer_account()
+    function the_email_address_must_be_associated_with_a_valid_reznorganizer_account()
     {
         $project = ProjectFactory::create();
 
         $this->actingAs($project->owner)
-            ->post( $project->path().'/invitations', [
+            ->post( action('ProjectInvitationsController@store', $project), [
             'email' => 'notauser@reznorganizer.com'
         ])
             ->assertSessionHasErrors([
                 'email' => 'The user you are inviting must have an active rezno[R]ganizer account.'
-            ]);
+            ], null, 'invitations');
         
     }
     
     /** @test */
-    public function invited_users_may_update_project_details()
+    function invited_users_may_update_project_details()
     {
         $project = ProjectFactory::create();
 

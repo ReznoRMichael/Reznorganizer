@@ -13,7 +13,7 @@
         <div class="control">
             <input id="name"
                     type="text"
-                    class="input bg-transparent border border-muted-light rounded p-2 text-xs w-full{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                    class="input bg-transparent border border-rtgray rounded p-2 text-xs w-full{{ $errors->has('name') ? ' is-invalid' : '' }}"
                     name="name"
                     value="{{ old('name') }}"
                     required
@@ -27,7 +27,7 @@
         <div class="control">
             <input id="email"
                     type="email"
-                    class="input bg-transparent border border-muted-light rounded p-2 text-xs w-full{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                    class="input bg-transparent border border-rtgray rounded p-2 text-xs w-full{{ $errors->has('email') ? ' is-invalid' : '' }}"
                     name="email"
                     value="{{ old('email') }}"
                     required>
@@ -40,27 +40,27 @@
         <div class="control">
             <input id="password"
                     type="password"
-                    class="input bg-transparent border border-muted-light rounded p-2 text-xs w-full{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                    class="input bg-transparent border border-rtgray rounded p-2 text-xs w-full{{ $errors->has('password') ? ' is-invalid' : '' }}"
                     name="password"
                     required>
         </div>
     </div>
 
-    <div class="field mb-6">
+    <div class="field mb-8">
         <label class="label text-sm mb-2 block" for="password-confirmation">Confirm Password</label>
 
         <div class="control">
             <input id="password-confirmation"
                     type="password"
-                    class="input bg-transparent border border-muted-light rounded p-2 text-xs w-full"
+                    class="input bg-transparent border border-rtgray rounded p-2 text-xs w-full"
                     name="password_confirmation"
                     required>
         </div>
     </div>
 
-    <div class="field">
-        <div class="control">
-            <button type="submit" class="button rt-orange mr-2">Register</button>
+    <div>
+        <div class="flex flex-col">
+            <button type="submit" class="button mx-auto">Register</button>
         </div>
     </div>
 

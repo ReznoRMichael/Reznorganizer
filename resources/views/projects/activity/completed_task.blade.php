@@ -1,1 +1,1 @@
-{{ $activity->user->name }} completed "{{ $activity->subject->body }}"
+{{ ucwords($activity->user->name) }} completed "{{ $activity->subject->body }}"

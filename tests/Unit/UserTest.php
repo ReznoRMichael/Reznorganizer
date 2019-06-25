@@ -13,7 +13,7 @@ class UserTest extends TestCase
     use RefreshDatabase;
     
     /** @test */
-    public function a_user_has_projects()
+    function a_user_has_projects()
     {
         $user = factory('App\User')->create();
 
@@ -21,7 +21,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function a_user_has_accessible_projects()
+    function a_user_has_accessible_projects()
     {
         $john = $this->signIn();
 

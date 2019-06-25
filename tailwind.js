@@ -416,6 +416,28 @@ module.exports = {
       '40': '40',
       '50': '50',
     },
+
+
+    extend: {
+      colors: {
+        'accent': 'var(--main-accent-color)',
+        'rtgray': 'var(--default-muted-text-color)',
+      },
+      backgroundColor: {
+        page: 'var(--page-background-color)', // bg-page
+        header: 'var(--header-background-color)',
+        card: 'var(--card-background-color)',
+        'accent': 'var(--main-accent-color)',
+        'btn-gray': 'var(--btn-gray-background-color)',
+      },
+      textColor: {
+        'default': 'var(--default-text-color)', // text-default
+        'default-alt': 'var(--default-alt-text-color)', // text-default-alt
+        'default-muted': 'var(--default-muted-text-color)', // text-default-muted
+      }
+    }
+
+
   },
   variants: {
     alignContent: ['responsive'],

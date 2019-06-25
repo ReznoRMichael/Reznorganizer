@@ -1,1 +1,1 @@
-{{ $activity->user->name }} added "{{ $activity->subject->body }}"
+{{ ucwords($activity->user->name) }} added "{{ $activity->subject->body }}"

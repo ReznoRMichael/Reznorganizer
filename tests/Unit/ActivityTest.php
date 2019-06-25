@@ -14,7 +14,7 @@ class ActivityTest extends TestCase
     use RefreshDatabase;
     
     /** @test */
-    public function it_has_a_user()
+    function it_has_a_user()
     {   
         $user = $this->signIn();
         

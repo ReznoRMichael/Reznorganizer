@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::group(['middleware' => 'auth'], function ()
 {
     Route::resource('projects', 'ProjectsController');
@@ -28,3 +24,7 @@ Route::group(['middleware' => 'auth'], function ()
 });
 
 Auth::routes();
+
+Route::get('/', function () {
+    return redirect( action('ProjectsController@index') );
+});

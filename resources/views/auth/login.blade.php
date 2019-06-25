@@ -13,7 +13,7 @@
             <div class="control">
                 <input id="email"
                        type="email"
-                       class="input bg-transparent border border-muted-light rounded p-2 text-xs w-full{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                       class="input bg-transparent border border-rtgray rounded p-2 text-xs w-full{{ $errors->has('email') ? ' is-invalid' : '' }}"
                        name="email"
                        value="{{ old('email') }}"
                        required>
@@ -26,15 +26,15 @@
             <div class="control">
                 <input id="password"
                        type="password"
-                       class="input bg-transparent border border-muted-light rounded p-2 text-xs w-full{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                       class="input bg-transparent border border-rtgray rounded p-2 text-xs w-full{{ $errors->has('password') ? ' is-invalid' : '' }}"
                        name="password"
                        required>
             </div>
         </div>
 
         <div class="field mb-6">
-            <div class="control">
-                <input class="form-check-input"
+            <div class="control flex justify-center items-center">
+                <input class="form-check-input mr-2"
                        type="checkbox"
                        name="remember"
                        id="remember"
@@ -46,14 +46,14 @@
             </div>
         </div>
 
-        <div class="field mb-6">
-            <div>
-                <button type="submit" class="button rt-orange mr-2">
+        <div>
+            <div class="flex flex-col">
+                <button type="submit" class="button mx-auto mb-5">
                     Login
                 </button>
 
                 @if (Route::has('password.request'))
-                    <a class="text-default text-sm" href="{{ route('password.request') }}">
+                    <a class="text-sm mx-auto" href="{{ route('password.request') }}">
                         Forgot Your Password?
                     </a>
                 @endif

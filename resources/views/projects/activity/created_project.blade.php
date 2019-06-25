@@ -1,1 +1,1 @@
-{{ $activity->user->name }} created the entry
+{{ ucwords($activity->user->name) }} created the entry

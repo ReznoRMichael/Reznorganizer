@@ -14,7 +14,7 @@ class ProjectTasksTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function guests_cannot_add_tasks_to_projects()
+    function guests_cannot_add_tasks_to_projects()
     {
         $project = factory(Project::class)->create();
 
@@ -22,7 +22,7 @@ class ProjectTasksTest extends TestCase
     }
 
     /** @test */
-    public function only_the_owner_of_a_project_may_add_tasks()
+    function only_the_owner_of_a_project_may_add_tasks()
     {
         $this->signIn();
 
@@ -37,7 +37,7 @@ class ProjectTasksTest extends TestCase
     }
 
     /** @test */
-    public function only_the_owner_of_a_project_may_update_a_task()
+    function only_the_owner_of_a_project_may_update_a_task()
     {
         $this->signIn();
 
@@ -53,7 +53,7 @@ class ProjectTasksTest extends TestCase
     }
 
     /** @test */
-    public function a_project_can_have_tasks()
+    function a_project_can_have_tasks()
     {
         $project = ProjectFactory::create();
 
@@ -122,7 +122,7 @@ class ProjectTasksTest extends TestCase
     }
 
     /** @test */
-    public function a_task_requires_a_body()
+    function a_task_requires_a_body()
     {
         $project = ProjectFactory::create();
 

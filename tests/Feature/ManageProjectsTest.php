@@ -14,7 +14,7 @@ class ManageProjectsTest extends TestCase
     use WithFaker, RefreshDatabase;
 
     /** @test */
-    public function guests_cannot_manage_projects()
+    function guests_cannot_manage_projects()
     {
         //$this -> withoutExceptionHandling();
 
@@ -23,44 +23,30 @@ class ManageProjectsTest extends TestCase
 
         // make sure that a guest is always redirected if not signed in
         $this -> get('/projects') -> assertRedirect('login');
-        $this -> get('/projects/create') -> assertRedirect('login');
+        $this -> get( action('ProjectsController@create') ) -> assertRedirect('login');
         $this -> get($project->path().'/edit') -> assertRedirect('login');
         $this -> get($project->path()) -> assertRedirect('login');
         $this -> post('/projects', $project->toArray()) -> assertRedirect('login');
     }
 
     /** @test */
-    public function a_user_can_create_a_project()
+    function a_user_can_create_a_project()
     {
-        $this -> withoutExceptionHandling();
-        
         // authenticate the user first before checking
         $this -> signIn();
-
         // assume that the page route exists
-        $this->get('/projects/create')->assertStatus(200);
+        $this->get( action('ProjectsController@create') )->assertStatus(200);
 
-        // save each parameter to an array for easier access
-        $attributes = [
-            'title' => $this -> faker -> sentence,
-            'description' => $this -> faker -> sentence,
-            'notes' => 'General notes here'
-        ];
-        
-        $response = $this -> post('/projects', $attributes);
-        
+        $attributes = factory(Project::class)->raw();
         // check if the user can view their project
-        $project = Project::where($attributes)->first();
-        $response->assertRedirect($project->path());
-
-        $this -> get($project->path())
+        $this->followingRedirects()->post('/projects', $attributes)
             ->assertSee($attributes['title'])
             ->assertSee($attributes['description'])
             ->assertSee($attributes['notes']);
     }
 
     /** @test */
-    public function a_user_can_see_all_projects_they_have_been_invited_to_on_their_dashboard()
+    function a_user_can_see_all_projects_they_have_been_invited_to_on_their_dashboard()
     {
         //given we're signed it
         $user = $this->signIn();
@@ -73,19 +59,23 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function unauthorized_users_cannot_delete_projects()
+    function unauthorized_users_cannot_delete_projects()
     {
         $project = ProjectFactory::create();
-
+        // redirect a guest to the login page when he tries to delete an entry
         $this->delete($project->path())->assertRedirect('/login');
-
-        $this->signIn();
-
+        //after the user is signed in
+        $user = $this->signIn();
+        //forbid the signed in user to delete the entry
         $this->delete($project->path())->assertStatus(403);
+        //after the user has been invited to the entry
+        $project->invite( $user );
+        //prevent the user from deleting the entry
+        $this->actingAs( $user )->delete($project->path())->assertStatus(403);
     }
 
     /** @test */
-    public function a_user_can_delete_a_project()
+    function a_user_can_delete_a_project()
     {
         $this->withoutExceptionHandling();
         $project = ProjectFactory::create();
@@ -98,7 +88,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_update_a_project()
+    function a_user_can_update_a_project()
     {        
         $project = ProjectFactory::create();
 
@@ -112,7 +102,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_update_a_projects_general_notes()
+    function a_user_can_update_a_projects_general_notes()
     {
         $project = ProjectFactory::create();
 
@@ -125,7 +115,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_view_their_project()
+    function a_user_can_view_their_project()
     {
         $project = ProjectFactory::create();
 
@@ -136,7 +126,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_cannot_view_the_projects_of_others()
+    function an_authenticated_user_cannot_view_the_projects_of_others()
     {
         //$this -> withoutExceptionHandling();
 
@@ -148,7 +138,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function an_authenticated_user_cannot_update_the_projects_of_others()
+    function an_authenticated_user_cannot_update_the_projects_of_others()
     {
         //$this -> withoutExceptionHandling();
 
@@ -160,7 +150,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_project_requires_a_title()
+    function a_project_requires_a_title()
     {
         // authenticate the user first before checking
         $this -> signIn();
@@ -173,7 +163,7 @@ class ManageProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_project_requires_a_description()
+    function a_project_requires_a_description()
     {
         // authenticate the user first before checking
         $this -> signIn();

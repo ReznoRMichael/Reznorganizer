@@ -1,1 +1,1 @@
-{{ $activity->user->name }} unchecked "{{ $activity->subject->body }}"
+{{ ucwords($activity->user->name) }} unchecked "{{ $activity->subject->body }}"

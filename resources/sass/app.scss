@@ -2,17 +2,17 @@
 
 @tailwind components;
 
-.button { @apply .text-white .text-base .px-5 .py-2 .rounded-lg .shadow ; }
-.rt-orange { @apply .bg-orange-600 ; }
-.rt-orange:hover { @apply .bg-orange-700 ; }
-.btn-gray { @apply .bg-gray-200 .text-black ; }
-.btn-gray:hover { @apply .bg-gray-300 }
-.card { @apply .bg-white .p-5 .rounded-lg .shadow ; }
+.button { @apply .text-white .bg-accent .text-base .px-5 .py-2 .rounded-lg .shadow ; }
+.button:hover { @apply .bg-orange-700 .text-white ; }
+.btn-gray { @apply .text-default .border-2 .border-accent .bg-transparent ; }
+.btn-gray:hover { @apply .bg-orange-700 .border-orange-700 .text-white }
+.card { @apply .bg-card .p-5 .rounded-lg .shadow ; }
 .reznor-logo {
     font-family: Consolas, monospace;
-    color: #808080;
+    color: var(--default-alt-text-color);
     letter-spacing: .1rem;
 }
+a:hover { @apply .text-accent .no-underline ; }
 
 @tailwind utilities;
 
@@ -24,3 +24,26 @@
 
 // Bootstrap
 //@import '~bootstrap/scss/bootstrap';
+
+:root {
+    --main-accent-color: #FF6600;
+}
+
+.theme-light {
+    --page-background-color: #edf2f7;
+    --header-background-color: #FFF;
+    --card-background-color: #FFF;
+    --btn-gray-background-color: #d8d8d8;
+    --default-text-color: #000;
+    --default-alt-text-color: #808080;
+    --default-muted-text-color: #b6b6b6;
+}
+.theme-dark {
+    --page-background-color: #333333;
+    --header-background-color: #414141;
+    --card-background-color: #414141;
+    --btn-gray-background-color: #b9b9b9;
+    --default-text-color: #d6d6d6;
+    --default-alt-text-color: #929292;
+    --default-muted-text-color: #707070;
+}

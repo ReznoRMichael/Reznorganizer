@@ -1,5 +1,5 @@
 @if(count( $activity->changes['after']) == 1 )
-    {{ $activity->user->name }} updated {{ key($activity->changes['after']) }}
+    {{ ucwords($activity->user->name) }} updated the {{ key($activity->changes['after']) }}
 @else
-{{ $activity->user->name }} updated the entry
+    {{ ucwords($activity->user->name) }} updated the entry
 @endif
