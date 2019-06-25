@@ -623,6 +623,7 @@ video {
 
 .button {
   color: #fff;
+  font-size: 1rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding-top: 0.5rem;
@@ -640,12 +641,12 @@ video {
 }
 
 .btn-gray {
-  background-color: #cbd5e0;
+  background-color: #edf2f7;
   color: #000;
 }
 
 .btn-gray:hover {
-  background-color: #a0aec0;
+  background-color: #e2e8f0;
 }
 
 .card {

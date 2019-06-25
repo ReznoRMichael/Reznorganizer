@@ -54,7 +54,7 @@ class ProjectPolicy
     public function update(User $user, Project $project)
     {
         // don't allow users update other users' projects
-        return $user->is($project->owner);
+        return $user->is($project->owner) || $project->members->contains($user);
     }
 
     /**

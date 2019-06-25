@@ -44,4 +44,19 @@ class User extends Authenticatable
         // use also: orderBy('updated_at', 'desc') or orderByDesc('updated_at')
         return $this->hasMany(Project::class, 'owner_id')->latest('updated_at');
     }
+
+    public function authorizedProjects()
+    {
+        // dashboard - see not only own projects, but also those invited to
+        return Project::where('owner_id', $this->id)
+            ->orWhereHas('members', function ($query) {
+                $query->where('user_id', $this->id);
+            })->get();
+
+        // alternative approach
+        // $projectsCreated = $this->projects;
+        // $ids = \DB::table('project_members')->where('user_id', $this->id)->pluck('project_id');
+        // $projectsShared = Project::find( $ids );
+        // return $projectsCreated->merge( $projectsShared );
+    }
 }

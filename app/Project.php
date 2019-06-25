@@ -36,4 +36,16 @@ class Project extends Model
         return $this->hasMany(Activity::class)->latest();
     }
 
+    public function invite(User $user)
+    {
+        return $this->members()->attach( $user );
+    }
+
+    public function members()
+    {
+        // standard convention is project_user, but we can override it to project_members
+        // project_members - the table name in the database with relations
+        return $this->belongsToMany(User::class, 'project_members')->withTimestamps();
+    }
+
 }

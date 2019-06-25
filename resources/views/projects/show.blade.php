@@ -5,10 +5,29 @@
 <header class="flex items-center mb-8">
 
     <div class="flex justify-between items-end w-full">
-        <p class="text-gray-600 no-underline text-normal">
-            <a href="/projects" class="text-gray-600 no-underline text-normal">My Entries</a> / {{ $project->title }}
+        <p class="text-gray-600 font-normal">
+            <a href="/projects" class="text-gray-600 no-underline font-normal hover:underline">My Entries</a> / {{ $project->title }}
         </p>
-        <a href="{{ $project->path().'/edit' }}" class="button rt-orange">Edit Entry</a>
+
+        <div class="flex items-center">
+
+            @foreach($project->members as $member)
+            <img
+                src="{{ gravatarUrl($member->email) }}"
+                alt="{{ $member->name }}'s avatar"
+                title="{{ ucwords($member->name) }} (collaborator)"
+                class="rounded-full w-8 mr-2">
+            @endforeach
+
+            <img
+                src="{{ gravatarUrl($project->owner->email) }}"
+                alt="{{ $project->owner->name }}'s avatar"
+                title="{{ ucwords($project->owner->name) }} (owner)"
+                class="rounded-full w-8 mr-2">
+
+            <a href="{{ $project->path().'/edit' }}" class="button rt-orange ml-6">Edit Entry</a>
+
+        </div>
     </div>
 
 </header>
