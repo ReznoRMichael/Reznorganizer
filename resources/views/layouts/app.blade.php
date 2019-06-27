@@ -27,12 +27,12 @@
                 <div class="flex justify-between items-center py-4">
                     
                     <h1 class="text-lg">
-                        <a class="flex flex-wrap md:flex-no-wrap flex-col md:flex-row items-center focus:outline-none ml-5 md:ml-0" href="{{ url('/projects') }}">
+                        <a class="flex flex-wrap md:flex-no-wrap flex-col md:flex-row items-center focus:outline-none ml-5 md:ml-0" href="{{ action('ProjectsController@index') }}">
                             <img src="/svg/reznorganizer-logo.svg" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" class="mr-2">
                             @guest
-                                <strong><p class="reznor-logo">rezno[R]<span class="text-accent">ganizer</span></p></strong>
+                                <p class="reznor-logo">rezno[R]<span class="text-accent">ganizer</span></p>
                             @else
-                                <strong><p class="reznor-logo">{{ strtolower(Auth::user()->name) }}[S]<span class="text-accent">organizer</span></p></strong>
+                                <p class="reznor-logo">{{ strtolower( preg_replace('/\s*/m','',Auth::user()->name) ) }}[S]<span class="text-accent">organizer</span></p>
                             @endguest
                         </a>
                     </h1>
@@ -53,7 +53,7 @@
                             @else
                                 <theme-switcher></theme-switcher>
 
-                                <dropdown align="right">
+                                <dropdown align="right" width="200px">
                                     <template v-slot:trigger>
                                         <button class="dropdown-button flex flex-col md:flex-row items-center md:mr-3"
                                             title="{{ ucwords(Auth::user()->name) }} ({{ Auth::user()->email }})">
@@ -66,6 +66,8 @@
                                     </template>
 
                                     <template v-slot:default>
+                                        <a href="{{ url('/') }}" class="dropdown-item">Welcome Page</a>
+                                        <a href="{{ url('/home') }}" class="dropdown-item">Dashboard</a>
                                         <a href="{{ route('logout') }}" class="dropdown-item"
                                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
@@ -110,7 +112,7 @@
             </div>
         </nav>
 
-        <main class="mx-auto container py-4">
+        <main class="mx-auto container p-4 md:py-4">
 
             @yield('content')
 

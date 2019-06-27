@@ -6,12 +6,12 @@
 
     <div class="flex justify-between items-end w-full">
         <h2 class="text-default-alt no-underline text-normal">My Entries</h2>
-        <a href="/projects/create" class="button" @click.prevent="$modal.show('create-project-modal')">Add New Entry</a>
+        <a href="{{ action('ProjectsController@create') }}" class="button" @click.prevent="$modal.show('create-project-modal')">Add New Entry</a>
     </div>
 
 </header>
 
-<main class="lg:flex lg:flex-wrap -mx-3 py-4">
+<main class="lg:flex lg:flex-wrap -mx-3 p-4 md:py-4">
 
     @forelse($projects as $project)
 
@@ -20,7 +20,10 @@
     </div>
 
     @empty
-        <div class="text-default-alt">It's quite empty here. Want to add an entry?</div>
+        <div class="mx-auto text-default-alt">
+            It's quite empty here. Want to <a href="{{ action('ProjectsController@create') }}"
+            @click.prevent="$modal.show('create-project-modal')"><b>add a new entry</b></a>?
+        </div>
     @endforelse
 
 </main>

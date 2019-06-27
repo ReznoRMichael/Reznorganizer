@@ -4,12 +4,12 @@
 
 <header class="flex items-center mb-8">
 
-    <div class="flex justify-between items-end w-full">
+    <div class="flex flex-col md:flex-row justify-between items-end w-full">
         <p class="text-default-alt font-normal">
             <a href="/projects" class="text-default-alt no-underline font-normal hover:text-accent">My Entries</a> / {{ $project->title }}
         </p>
 
-        <div class="flex items-center">
+        <div class="flex items-center mt-3 md:mt-0">
 
             @foreach($project->members as $member)
             <img
@@ -49,8 +49,14 @@
                             @csrf
                             <div class="flex items-center">
                             <input type="text" name="body" value="{{ $task->body }}"
-                                class="w-full bg-card {{ $task->completed ? 'text-default-muted' : '' }}">
-                                <input type="checkbox" name="completed" onchange="this.form.submit();" {{ $task->completed ? 'checked' : '' }}>
+                                class="w-full bg-card {{ $task->completed ? 'text-default-muted line-through' : '' }}">
+                                <div class="checkbox">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="completed"
+                                            onchange="this.form.submit();" {{ $task->completed ? 'checked' : '' }}>
+                                            <span class="checkmark"></span>
+                                    </label>
+                                </div>
                             </div>
                         </form>
                     </div>

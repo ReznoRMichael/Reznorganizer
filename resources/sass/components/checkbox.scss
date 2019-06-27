@@ -1,0 +1,97 @@
+.radio, .checkbox
+{
+    position: relative;
+    display: block;
+    left: 0;
+    padding: 0;
+    margin-left: 0;
+}
+input[type="checkbox"],
+input[type="radio"]
+{
+    margin-right: 0;
+}
+.radio-label,
+.checkbox-label
+{
+    display: block;
+    position: relative;
+    padding: 0px 0px 0px 24px;
+    cursor: pointer;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.radiomark,
+.checkmark
+{
+    position: absolute;
+    top: -12px;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: var(--page-background-color);
+}
+.radiomark { border-radius: 50%; }
+
+/* Hide the browser's default checkbox */
+.radio-label input,
+.checkbox-label input
+{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+/* On mouse-over change background color */
+.radio-label:hover input ~ .radiomark,
+.checkbox-label:hover input ~ .checkmark
+{
+    background-color: var(--default-muted-text-color);
+}
+/* When the checkbox is checked change background color */
+.radio-label input:checked ~ .radiomark,
+.checkbox-label input:checked ~ .checkmark
+{
+    background-color: var(--main-accent-color);
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.radiomark:after,
+.checkmark:after
+{
+    content: "";
+    position: absolute;
+    display: none;
+}
+/* Show the checkmark when checked */
+.radio-label input:checked ~ .radiomark:after,
+.checkbox-label input:checked ~ .checkmark:after
+{
+    display: block;
+}
+/* Style the checkmark/indicator */
+.checkbox-label .checkmark:after
+{
+    left: 8px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid #FFF;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/* Style the checkmark/indicator */
+.radio-label .radiomark:after
+{
+    top: 7px;
+    left: 7px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #000;
+}

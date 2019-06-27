@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'PagesController@home');
 
 Route::group(['middleware' => 'auth'], function ()
 {
@@ -24,7 +25,3 @@ Route::group(['middleware' => 'auth'], function ()
 });
 
 Auth::routes();
-
-Route::get('/', function () {
-    return redirect( action('ProjectsController@index') );
-});

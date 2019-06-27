@@ -34,7 +34,7 @@
 
         <div class="field mb-6">
             <div class="control flex justify-center items-center">
-                <input class="form-check-input mr-2"
+                {{-- <input class="form-check-input mr-2"
                        type="checkbox"
                        name="remember"
                        id="remember"
@@ -42,7 +42,17 @@
 
                 <label class="text-sm" for="remember">
                     Remember Me
-                </label>
+                </label> --}}
+
+                <div class="checkbox">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="remember" id="remember"
+                            {{ old('remember') ? 'checked' : '' }}>
+                            <span class="checkmark" style="top:0; left:-6px;"></span>
+                            <p style="font-size:1rem;">Remember Me</p>
+                    </label>
+                </div>
+                
             </div>
         </div>
 
