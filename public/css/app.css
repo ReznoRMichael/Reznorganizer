@@ -669,6 +669,33 @@ a:hover {
   text-decoration: none;
 }
 
+.dropdown-button {
+  color: var(--default-text-color);
+}
+
+.dropdown-button:hover {
+  color: var(--main-accent-color);
+  text-decoration: none;
+}
+
+.dropdown-item {
+  display: block;
+  color: var(--default-text-color);
+  text-decoration: none;
+  line-height: 2;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.dropdown-item:hover {
+  color: var(--main-accent-color);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.dropdown-toggle > button:focus {
+  outline: 0;
+}
+
 .appearance-none {
   -webkit-appearance: none;
      -moz-appearance: none;

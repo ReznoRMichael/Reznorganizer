@@ -2,10 +2,18 @@
 
 @tailwind components;
 
-.button { @apply .text-white .bg-accent .text-base .px-5 .py-2 .rounded-lg .shadow ; }
-.button:hover { @apply .bg-orange-700 .text-white ; }
-.btn-gray { @apply .text-default .border-2 .border-accent .bg-transparent ; }
-.btn-gray:hover { @apply .bg-orange-700 .border-orange-700 .text-white }
+.button {
+    @apply .text-white .bg-accent .text-base .px-5 .py-2 .rounded-lg .shadow ;
+    &:hover {
+        @apply .bg-orange-700 .text-white ;
+    }
+}
+.btn-gray {
+    @apply .text-default .border-2 .border-accent .bg-transparent ;
+    &:hover {
+        @apply .bg-orange-700 .border-orange-700 .text-white ;
+    }
+}
 .card { @apply .bg-card .p-5 .rounded-lg .shadow ; }
 .reznor-logo {
     font-family: Consolas, monospace;
@@ -13,6 +21,25 @@
     letter-spacing: .1rem;
 }
 a:hover { @apply .text-accent .no-underline ; }
+
+.dropdown-button {
+    @apply .text-default ;
+    &:hover {
+        @apply .text-accent .no-underline ;
+    }
+}
+.dropdown-item {
+    @apply .block .text-default .no-underline .leading-loose .px-4 ;
+    &:hover {
+        @apply .text-accent ;
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+}
+.dropdown-toggle {
+    > button:focus {
+        outline: 0;
+    }
+}
 
 @tailwind utilities;
 

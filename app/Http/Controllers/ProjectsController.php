@@ -32,14 +32,22 @@ class ProjectsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function store()
     {
         // validate and persist
         $project = auth() -> user() -> projects() -> create( $this->validateRequest() );
-
+        // for adding optional tasks from the Vue modal form
+        if( request()->has('tasks') ) {
+            foreach( request('tasks') as $task ) {
+                $project->addTask( $task['body'] );
+            }
+        }
+        // for Vue modal form - return the redirect path for the project
+        if( request()->wantsJson() ) {
+            return ['projectpath' => $project->path()];
+        }
         // redirect
         return redirect( $project->path() );
     }

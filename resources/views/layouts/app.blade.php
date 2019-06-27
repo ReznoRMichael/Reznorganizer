@@ -53,7 +53,30 @@
                             @else
                                 <theme-switcher></theme-switcher>
 
-                                <div class="text-right">
+                                <dropdown align="right">
+                                    <template v-slot:trigger>
+                                        <button class="dropdown-button flex flex-col md:flex-row items-center md:mr-3"
+                                            title="{{ ucwords(Auth::user()->name) }} ({{ Auth::user()->email }})">
+                                            <img
+                                                src="{{ gravatarUrl(Auth::user()->email) }}"
+                                                alt="{{ Auth::user()->name }}'s avatar"
+                                                class="rounded-full w-12 md:mr-2">
+                                            <strong>{{ ucwords(Auth::user()->name) }}</strong>
+                                        </button>
+                                    </template>
+
+                                    <template v-slot:default>
+                                        <a href="{{ route('logout') }}" class="dropdown-item"
+                                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                    </template>
+                                </dropdown>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+
+                                {{-- <div class="text-right">
                                     <div class="flex flex-col flex-wrap md:flex-row md:items-center">
                                         <a href="{{ route('projects.index') }}"
                                             class="flex flex-col md:flex-row items-center md:mr-3"
@@ -77,7 +100,7 @@
                                         </form>
                                     </div>
 
-                                </div>
+                                </div> --}}
                             @endguest
 
                     </div>

@@ -35,14 +35,34 @@ class ManageProjectsTest extends TestCase
         // authenticate the user first before checking
         $this -> signIn();
         // assume that the page route exists
-        $this->get( action('ProjectsController@create') )->assertStatus(200);
+        $this->get( action('ProjectsController@index') )->assertStatus(200);
 
         $attributes = factory(Project::class)->raw();
         // check if the user can view their project
-        $this->followingRedirects()->post('/projects', $attributes)
+        $this->followingRedirects()->post( action('ProjectsController@index'), $attributes)
             ->assertSee($attributes['title'])
             ->assertSee($attributes['description'])
             ->assertSee($attributes['notes']);
+    }
+
+    /** @test */
+    function tasks_can_be_included_as_part_of_new_project_creation()
+    {
+        // $this->withoutExceptionHandling();
+        $this -> signIn();
+
+        $attributes = factory(Project::class)->raw();
+
+        $attributes['tasks'] = [
+            ['body' => 'Task 1'],
+            ['body' => 'Task 2'],
+            ['body' => ''],
+            ['body' => '']
+        ];
+
+        $this->post( action('ProjectsController@index'), $attributes );
+        
+        $this->assertCount( 2, Project::first()->tasks );
     }
 
     /** @test */

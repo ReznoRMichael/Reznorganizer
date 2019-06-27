@@ -15,8 +15,10 @@ class ProjectTasksController extends Controller
         request() -> validate([
             'body' => 'required'
         ]);
-
+        
+        if( request('body') != '' ) {
         $project -> addTask( request('body') );
+        }
 
         return redirect( $project->path() );
     }

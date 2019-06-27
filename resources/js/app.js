@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-//require('./bootstrap');
+require('./bootstrap');
 
 window.Vue = require('vue');
 
@@ -35,6 +35,8 @@ Vue.use(VModal, { componentName: "foo-modal" })
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('theme-switcher', require('./components/ThemeSwitcher.vue').default);
+Vue.component('create-project-modal', require('./components/CreateProjectModal.vue').default);
+Vue.component('dropdown', require('./components/Dropdown.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
