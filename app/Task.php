@@ -42,7 +42,7 @@ class Task extends Model
 
     public function path()
     {
-        return "/projects/{$this->project->id}/tasks/{$this->id}";
+        return action('ProjectsController@index')."/{$this->project->id}/tasks/{$this->id}";
     }
 
 }

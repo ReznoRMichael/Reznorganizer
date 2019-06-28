@@ -22,11 +22,11 @@ class ManageProjectsTest extends TestCase
         $project = factory('App\Project') -> create();
 
         // make sure that a guest is always redirected if not signed in
-        $this -> get('/projects') -> assertRedirect('login');
+        $this -> get( action('ProjectsController@index') ) -> assertRedirect('login');
         $this -> get( action('ProjectsController@create') ) -> assertRedirect('login');
         $this -> get($project->path().'/edit') -> assertRedirect('login');
         $this -> get($project->path()) -> assertRedirect('login');
-        $this -> post('/projects', $project->toArray()) -> assertRedirect('login');
+        $this -> post( action('ProjectsController@index'), $project->toArray()) -> assertRedirect('login');
     }
 
     /** @test */
@@ -102,7 +102,7 @@ class ManageProjectsTest extends TestCase
 
         $this->actingAs($project->owner)
              ->delete($project->path())
-             ->assertRedirect('/projects');
+             ->assertRedirect( action('ProjectsController@index') );
 
         $this->assertDatabaseMissing('projects', $project->only('id'));
     }
@@ -161,7 +161,6 @@ class ManageProjectsTest extends TestCase
     function an_authenticated_user_cannot_update_the_projects_of_others()
     {
         //$this -> withoutExceptionHandling();
-
         $this -> signIn();
 
         $project = factory('App\Project') -> create();
@@ -174,12 +173,10 @@ class ManageProjectsTest extends TestCase
     {
         // authenticate the user first before checking
         $this -> signIn();
-
         // make a new project with a factory for checking (raw makes an array)
         $attributes = factory('App\Project') -> raw(['title' => '']);
-
         // use a helper to check if the project has a title
-        $this -> post('/projects', $attributes) -> assertSessionHasErrors('title');
+        $this -> post( action('ProjectsController@index'), $attributes) -> assertSessionHasErrors('title');
     }
 
     /** @test */
@@ -187,11 +184,9 @@ class ManageProjectsTest extends TestCase
     {
         // authenticate the user first before checking
         $this -> signIn();
-
         // make a new project with a factory for checking (raw makes an array)
         $attributes = factory('App\Project') -> raw(['description' => '']);
-
         // use a helper to check if the project has a description
-        $this -> post('/projects', $attributes) -> assertSessionHasErrors('description');
+        $this -> post( action('ProjectsController@index'), $attributes) -> assertSessionHasErrors('description');
     }
 }

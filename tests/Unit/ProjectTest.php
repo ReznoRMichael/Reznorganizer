@@ -15,7 +15,7 @@ class ProjectTest extends TestCase
     {
         $project = factory('App\Project')->create();
 
-        $this -> assertEquals('/projects/'. $project->id, $project -> path());
+        $this -> assertEquals( action('ProjectsController@index').'/'.$project->id, $project->path());
     }
 
     /** @test */
@@ -29,14 +29,12 @@ class ProjectTest extends TestCase
     /** @test */
     function it_can_add_a_task()
     {
+        $this->withoutExceptionHandling();
         $project = factory('App\Project')->create();
-
         // after adding a task
         $task = $project->addTask('Test task');
-
         // there should be at least one task
         $this -> assertCount(1, $project->tasks);
-
         // that contains the data written earlier
         $this -> assertTrue($project->tasks->contains($task));
     }

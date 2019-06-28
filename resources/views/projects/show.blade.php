@@ -6,7 +6,7 @@
 
     <div class="flex flex-col md:flex-row justify-between items-end w-full">
         <p class="text-default-alt font-normal">
-            <a href="/projects" class="text-default-alt no-underline font-normal hover:text-accent">My Entries</a> / {{ $project->title }}
+            <a href="{{ action('ProjectsController@index') }}" class="text-default-alt no-underline font-normal hover:text-accent">My Entries</a> / {{ $project->title }}
         </p>
 
         <div class="flex items-center mt-3 md:mt-0">
@@ -63,7 +63,7 @@
                 @endforeach
                     <form action="{{ $project->path().'/tasks' }}" method="post">
                         @csrf
-                        <input type="text" name="body" class="card bg-card mb-3 w-full" placeholder="Add a new task...">
+                        <input type="text" name="body" class="card bg-card mb-3 w-full" placeholder="Type a task name and press Enter to save...">
                     </form>
             </div>
     
@@ -75,7 +75,7 @@
                     @method('PATCH')
                     @csrf
                     <textarea name="notes" class="card w-full mb-4" style="min-height: 200px;" placeholder="Add more information here...">{{ $project->notes }}</textarea>
-                    <button type="submit" class="button">Save Entry</button>
+                    <button type="submit" class="button">Save Notes</button>
 
                     @include('_errors')
 

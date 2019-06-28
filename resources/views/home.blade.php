@@ -22,7 +22,7 @@
         <div class="card flex flex-col">
             <h3 class="card-header text-lg font-normal mb-5">Click here to add, view and manage your entries:</h2>
 
-            <a class="mx-auto button" href="{{ url('/projects') }}">Your Entries</a>
+            <a class="mx-auto button" href="{{ action('ProjectsController@index') }}">Your Entries</a>
 
             <h2 class="card-header text-2xl font-normal my-5">Currently logged in users can:</h2>
             

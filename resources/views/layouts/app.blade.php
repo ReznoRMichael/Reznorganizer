@@ -17,6 +17,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('favicon.ico') }}" rel="shortcut icon">
     {{-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css'/> --}}
 </head>
 <body class="theme-light bg-page text-default">
@@ -28,7 +29,7 @@
                     
                     <h1 class="text-lg">
                         <a class="flex flex-wrap md:flex-no-wrap flex-col md:flex-row items-center focus:outline-none ml-5 md:ml-0" href="{{ action('ProjectsController@index') }}">
-                            <img src="/svg/reznorganizer-logo.svg" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" class="mr-2">
+                        <img src="{{ url('/')."/svg/reznorganizer-logo.svg" }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" class="mr-2">
                             @guest
                                 <p class="reznor-logo">rezno[R]<span class="text-accent">ganizer</span></p>
                             @else

@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('favicon.ico') }}" rel="shortcut icon">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -22,7 +23,7 @@
             <div class="content flex flex-col justify-center">
                 <div class="flex justify-center">
                     <div class="flex flex-wrap md:flex-no-wrap flex-col md:flex-row items-center focus:outline-none text-normal md:text-3xl">
-                        <img src="/svg/reznorganizer-logo.svg" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" class="mr-2 w-24 h-auto">
+                        <img src="svg/reznorganizer-logo.svg" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" class="mr-2 w-24 h-auto">
                             @guest
                                 <p class="reznor-logo">rezno[R]<span class="text-accent">ganizer</span></p>
                             @else

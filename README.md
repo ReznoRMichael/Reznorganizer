@@ -4,14 +4,17 @@
 
 ## General info
 
-TDD - Laravel + PHP + Vue. A simple Test-Driven Development project I did while going through the official course on Laravel PHP framework on Laracasts (2019).
+TDD - Laravel + PHP + Vue. A simple Test-Driven Development learning project. I also did some additional modifications and personal customization.
 
 ## Things Learned
 
 * TDD (Test-Driven Development) - PHPUnit testing (42 tests, 89 assertions)
 * Vue, SASS, NPM, Webpack, Laravel Mix, Tailwind
+* Using url(), action() or route() helpers instead of hardcoding URLs
+* Creating own code snippets in Visual Studio Code
 * Creating auto-loaded aliases for PHPUnit commands in Windows CMD/PATH (outside knowledge)
 * Creating/editing/exporting/converting SVG files (CorelDRAW + Inkscape, outside knowledge)
+* Displaying and solving HTTP 500 errors while deploying on server (index.php - error_reporting(E_ALL); outside knowledge)
 
 ## Mostly used technologies
 
@@ -30,16 +33,23 @@ TDD - Laravel + PHP + Vue. A simple Test-Driven Development project I did while 
 * SVG
 * XAMPP
 
-## To do / fix bugs
+## To do list and fix bugs for the future
 
-* Vue modal create project - when adding more than one empty task 'body' it gives an error when submitting the form
-* Vue modal create project - do not allow to add more than 1 empty task input
-* A user can delete tasks from a project
-* ~~CSS: Style the checkboxes~~
-* Make a nice front/landing page with more info
-* Add more information to the /home page + link to all projects
-* Move the style and theme components to separate files
-* Confirmation box for deleting a project
+* Bug: Vue modal create project - when there are empty tasks 'body' in the form (except first and last) it gives an error when submitting the form (try a different algorithm for removing empty tasks from array)
+* Feature: Vue modal create project - make mobile-friendly
+* ~~Code Optimization: Vue modal create project - do not allow to add more than 1 empty task input~~
+* Bug: A project owner should not be able to invite himself to a project
+* Bug: A project owner should not be able to invite the same user multiple times to a project
+* Feature: A user can delete tasks from a project
+* ~~Feature: Style the checkboxes with CSS~~
+* ~~Feature: Make a front/landing page with more info~~
+* ~~Feature: Add more information to the /home page + link to all projects~~
+* Code Optimization: Move the style and theme components to separate files
+* Feature: Confirmation box for deleting a project
+* Feature: A project owner can remove invited users from a project
+* Feature: Add Google reCaptcha to registration form
+* Feature: Add account creation e-mail sending with confirmation link
+* Bug/Feature: The password reset is inactive
 
 ## Contact
 

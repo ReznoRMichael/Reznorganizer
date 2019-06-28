@@ -61,7 +61,7 @@
 export default {
     data() {
         return {
-            tcounter: 1,
+            tcounter: 0,
             form: new ReznorganizerForm({
                 title: '',
                 description: '',
@@ -73,16 +73,22 @@ export default {
     },
     methods: {
         addTask() {
-            this.form.tasks.push( { body: '' } );
-            this.tcounter++;
+            if(this.form.tasks[this.tcounter].body != '')
+            {
+                this.form.tasks.push( { body: '' } );
+                this.tcounter++;
+            }
         },
         async submit() {
-            // prevent posting the tasks to SQL if the task input is empty
-            if(! this.form.tasks[0].body ) {
-                delete this.form.originalData.tasks;
+            // prevent adding additional task inputs if the last input is empty
+            if( (this.form.tasks.length > 1) && (this.form.tasks[ this.form.tasks.length-1 ].body == '') ) 
+            {
+                this.form.tasks.pop();
             }
+            // prevent posting the tasks to SQL if the last task input is empty
+            if(!this.form.tasks[0].body) delete this.form.originalData.tasks;
 
-            this.form.submit('/projects')
+            this.form.submit('/reznorganizer/public/projects')
                      .then(response => location = response.data.projectpath);
         }
     }
