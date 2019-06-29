@@ -50,6 +50,9 @@ TDD - Laravel + PHP + Vue. A simple Test-Driven Development learning project. I 
 * Feature: Add Google reCaptcha to registration form
 * Feature: Add account creation e-mail sending with confirmation link
 * Bug/Feature: The password reset is inactive
+* Bug: The size of the card is too small to fit longer description/title text
+* Feature: Notes textarea automatic resize (fit to content)
+* Feature: Add date for first entry creation
 
 ## Contact
 
