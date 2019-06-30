@@ -7740,8 +7740,22 @@ video {
 }
 
 :root {
-  --main-accent-color: #FF6600;
+  --main-accent-color: #ff6600;
   font-family: "Nunito", "sans-serif";
+}
+
+.gradient {
+  background: #ff6600;
+  background: linear-gradient(to right, #ff6600 0%, #b70046 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
+}
+
+.border-gradient {
+  border-color: #ff6600;
+  border-color: -moz-linear-gradient(left, #ff6600 0%, #b70046 100%);
+  border-color: -webkit-linear-gradient(left, #ff6600 0%, #b70046 100%);
+  border-color: linear-gradient(to right, #ff6600 0%, #b70046 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
 }
 
 .theme-light {
@@ -7777,7 +7791,9 @@ video {
 }
 
 .button:hover {
-  background-color: #c05621;
+  background: #ff6600;
+  background: linear-gradient(to right, #ff6600 0%, #b70046 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
   color: #fff;
 }
 
@@ -7789,8 +7805,14 @@ video {
 }
 
 .btn-gray:hover {
-  background-color: #c05621;
-  border-color: #c05621;
+  background: #ff6600;
+  background: linear-gradient(to right, #ff6600 0%, #b70046 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
+  border-color: #ff6600;
+  border-color: -moz-linear-gradient(left, #ff6600 0%, #b70046 100%);
+  border-color: -webkit-linear-gradient(left, #ff6600 0%, #b70046 100%);
+  border-color: linear-gradient(to right, #ff6600 0%, #b70046 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
   color: #fff;
 }
 

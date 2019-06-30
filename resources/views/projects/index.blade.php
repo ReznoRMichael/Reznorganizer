@@ -15,7 +15,7 @@
 
     @forelse($projects as $project)
 
-    <div class="lg:w-1/3 p-3">
+    <div class="lg:w-1/2 xl:w-1/3 p-3">
         @include('projects.card')
     </div>
 

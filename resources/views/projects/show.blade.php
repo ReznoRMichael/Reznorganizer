@@ -39,9 +39,14 @@
         <div class="lg:w-3/4 px-3 mb-6">
 
             <div class="mb-8">
+                @include('projects.showcard')
+            </div>
+
+            {{-- Task list --}}
+
+            <div class="mb-8">
                 <h2 class="text-default-alt no-underline text-xl mb-3">Task List</h2>
 
-                {{-- tasks --}}
                 @foreach($project->tasks as $task)
                     <div class="card mb-3">
                         <form action="{{ $task->path() }}" method="post">
@@ -66,11 +71,12 @@
                         <input type="text" name="body" class="card bg-card mb-3 w-full" placeholder="Type a task name and press Enter to save...">
                     </form>
             </div>
-    
+
+            {{-- General notes --}}
+
             <div class="mb-8">
                 <h2 class="text-default-alt no-underline text-xl mb-3">Additional info</h2>
     
-                {{-- general notes --}}
                 <form action="{{ $project->path() }}" method="post">
                     @method('PATCH')
                     @csrf
@@ -85,9 +91,8 @@
         </div>
 
         {{-- right side --}}
-        <div class="lg:w-1/4 px-3 lg:mt-10">
+        <div class="lg:w-1/4 px-3">
 
-            @include('projects.card')
             @include('projects.activity.card')
 
             @can('manage', $project)

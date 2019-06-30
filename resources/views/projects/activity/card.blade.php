@@ -1,4 +1,4 @@
-<div class="card mt-3 text-xs">
+<div class="card text-xs">
   @foreach($project->activity as $activity)
       <div class="{{ $loop->last ? '' : 'mb-1' }}">
         @include("projects.activity.{$activity->description}")
