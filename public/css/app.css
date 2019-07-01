@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito:300,400,400i,700&display=swap&subset=latin-ext);@import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap&subset=latin-ext);/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+@import url(https://fonts.googleapis.com/css?family=Arsenal:400,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext);@import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap&subset=latin-ext);/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
    ========================================================================== */
@@ -2287,6 +2287,10 @@ video {
   border-color: var(--default-muted-text-color);
 }
 
+.border-card{
+  border-color: var(--card-background-color);
+}
+
 .hover\:border-transparent:hover{
   border-color: transparent;
 }
@@ -2667,6 +2671,10 @@ video {
   border-color: var(--default-muted-text-color);
 }
 
+.hover\:border-card:hover{
+  border-color: var(--card-background-color);
+}
+
 .focus\:border-transparent:focus{
   border-color: transparent;
 }
@@ -3045,6 +3053,10 @@ video {
 
 .focus\:border-rtgray:focus{
   border-color: var(--default-muted-text-color);
+}
+
+.focus\:border-card:focus{
+  border-color: var(--card-background-color);
 }
 
 .rounded-none{
@@ -7741,7 +7753,16 @@ video {
 
 :root {
   --main-accent-color: #ff6600;
-  font-family: "Nunito", "sans-serif";
+  font-family: "Arsenal", sans-serif;
+}
+
+a:hover {
+  background: #ff6600;
+  background: linear-gradient(to right, #ff6600 0%, #b70046 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
 }
 
 .gradient {
@@ -7750,12 +7771,9 @@ video {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
 }
 
-.border-gradient {
-  border-color: #ff6600;
-  border-color: -moz-linear-gradient(left, #ff6600 0%, #b70046 100%);
-  border-color: -webkit-linear-gradient(left, #ff6600 0%, #b70046 100%);
-  border-color: linear-gradient(to right, #ff6600 0%, #b70046 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
+.text-gradient {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .theme-light {
@@ -7797,21 +7815,21 @@ video {
   color: #fff;
 }
 
+a.button:hover {
+  -webkit-text-fill-color: white;
+  color: #fff;
+}
+
 .btn-gray {
   color: var(--default-text-color);
   border-width: 2px;
   border-color: var(--main-accent-color);
-  background-color: transparent;
+  background-color: var(--card-background-color);
 }
 
 .btn-gray:hover {
   background: #ff6600;
   background: linear-gradient(to right, #ff6600 0%, #b70046 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
-  border-color: #ff6600;
-  border-color: -moz-linear-gradient(left, #ff6600 0%, #b70046 100%);
-  border-color: -webkit-linear-gradient(left, #ff6600 0%, #b70046 100%);
-  border-color: linear-gradient(to right, #ff6600 0%, #b70046 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
   color: #fff;
 }
@@ -7831,17 +7849,16 @@ video {
   letter-spacing: 0.1rem;
 }
 
-a:hover {
-  color: var(--main-accent-color);
-  text-decoration: none;
-}
-
 .dropdown-button {
   color: var(--default-text-color);
 }
 
 .dropdown-button:hover {
-  color: var(--main-accent-color);
+  background: #ff6600;
+  background: linear-gradient(to right, #ff6600 0%, #b70046 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-decoration: none;
 }
 
@@ -9635,6 +9652,10 @@ input[type=radio] {
     border-color: var(--default-muted-text-color);
   }
 
+  .sm\:border-card{
+    border-color: var(--card-background-color);
+  }
+
   .sm\:hover\:border-transparent:hover{
     border-color: transparent;
   }
@@ -10015,6 +10036,10 @@ input[type=radio] {
     border-color: var(--default-muted-text-color);
   }
 
+  .sm\:hover\:border-card:hover{
+    border-color: var(--card-background-color);
+  }
+
   .sm\:focus\:border-transparent:focus{
     border-color: transparent;
   }
@@ -10393,6 +10418,10 @@ input[type=radio] {
 
   .sm\:focus\:border-rtgray:focus{
     border-color: var(--default-muted-text-color);
+  }
+
+  .sm\:focus\:border-card:focus{
+    border-color: var(--card-background-color);
   }
 
   .sm\:rounded-none{
@@ -16755,6 +16784,10 @@ input[type=radio] {
     border-color: var(--default-muted-text-color);
   }
 
+  .md\:border-card{
+    border-color: var(--card-background-color);
+  }
+
   .md\:hover\:border-transparent:hover{
     border-color: transparent;
   }
@@ -17135,6 +17168,10 @@ input[type=radio] {
     border-color: var(--default-muted-text-color);
   }
 
+  .md\:hover\:border-card:hover{
+    border-color: var(--card-background-color);
+  }
+
   .md\:focus\:border-transparent:focus{
     border-color: transparent;
   }
@@ -17513,6 +17550,10 @@ input[type=radio] {
 
   .md\:focus\:border-rtgray:focus{
     border-color: var(--default-muted-text-color);
+  }
+
+  .md\:focus\:border-card:focus{
+    border-color: var(--card-background-color);
   }
 
   .md\:rounded-none{
@@ -23875,6 +23916,10 @@ input[type=radio] {
     border-color: var(--default-muted-text-color);
   }
 
+  .lg\:border-card{
+    border-color: var(--card-background-color);
+  }
+
   .lg\:hover\:border-transparent:hover{
     border-color: transparent;
   }
@@ -24255,6 +24300,10 @@ input[type=radio] {
     border-color: var(--default-muted-text-color);
   }
 
+  .lg\:hover\:border-card:hover{
+    border-color: var(--card-background-color);
+  }
+
   .lg\:focus\:border-transparent:focus{
     border-color: transparent;
   }
@@ -24633,6 +24682,10 @@ input[type=radio] {
 
   .lg\:focus\:border-rtgray:focus{
     border-color: var(--default-muted-text-color);
+  }
+
+  .lg\:focus\:border-card:focus{
+    border-color: var(--card-background-color);
   }
 
   .lg\:rounded-none{
@@ -30995,6 +31048,10 @@ input[type=radio] {
     border-color: var(--default-muted-text-color);
   }
 
+  .xl\:border-card{
+    border-color: var(--card-background-color);
+  }
+
   .xl\:hover\:border-transparent:hover{
     border-color: transparent;
   }
@@ -31375,6 +31432,10 @@ input[type=radio] {
     border-color: var(--default-muted-text-color);
   }
 
+  .xl\:hover\:border-card:hover{
+    border-color: var(--card-background-color);
+  }
+
   .xl\:focus\:border-transparent:focus{
     border-color: transparent;
   }
@@ -31753,6 +31814,10 @@ input[type=radio] {
 
   .xl\:focus\:border-rtgray:focus{
     border-color: var(--default-muted-text-color);
+  }
+
+  .xl\:focus\:border-card:focus{
+    border-color: var(--card-background-color);
   }
 
   .xl\:rounded-none{

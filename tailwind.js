@@ -434,6 +434,9 @@ module.exports = {
         'default': 'var(--default-text-color)', // text-default
         'default-alt': 'var(--default-alt-text-color)', // text-default-alt
         'default-muted': 'var(--default-muted-text-color)', // text-default-muted
+      },
+      borderColor: {
+        card: 'var(--card-background-color)',
       }
     }
 

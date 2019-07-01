@@ -4,7 +4,7 @@
 
 ## General info
 
-TDD - Laravel + PHP + Vue. A simple Test-Driven Development learning project. I also did some additional modifications and personal customization.
+TDD + MVC + OOP: PHP, Laravel, Vue, SQLite, Tailwind. A simple Test-Driven Development learning project that I did to use by myself and also my family and friends for life organization. I also am doing some additional modifications and personal customization, repairing bugs and adding new features as I learn.
 
 ## Things Learned
 
@@ -53,7 +53,8 @@ TDD - Laravel + PHP + Vue. A simple Test-Driven Development learning project. I 
 * ~~Bug: The size of the card is too small to fit longer description/title text~~
 * Feature: Notes textarea automatic resize (fit to content)
 * Feature: Add date for first entry creation
-* Cosmetic: Add gradient to Tailwind/SASS
+* ~~Cosmetic: Add gradient to Tailwind/SASS~~
+* Cosmetic: Add gradient on alternative button border hover
 
 ## Contact
 

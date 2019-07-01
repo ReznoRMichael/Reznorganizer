@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 // Fonts
-//@import url('https://fonts.googleapis.com/css?family=Nunito');
-@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,400i,700&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Arsenal:400,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext');
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap&subset=latin-ext');
 
 // Variables
@@ -15,8 +14,10 @@
 
 :root {
     --main-accent-color: #ff6600;
-    font-family: 'Nunito', 'sans-serif';
+    font-family: 'Arsenal', sans-serif;
 }
+a:hover { @apply .gradient .text-gradient .no-underline ; }
+
 .gradient {
     background: #ff6600;
     background: -moz-linear-gradient(left, #ff6600 0%, #b70046 100%);
@@ -24,12 +25,9 @@
     background: linear-gradient(to right, #ff6600 0%,#b70046 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff6600', endColorstr='#b70046',GradientType=1 );
 }
-.border-gradient {
-    border-color: #ff6600;
-    border-color: -moz-linear-gradient(left, #ff6600 0%, #b70046 100%);
-    border-color: -webkit-linear-gradient(left, #ff6600 0%,#b70046 100%);
-    border-color: linear-gradient(to right, #ff6600 0%,#b70046 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff6600', endColorstr='#b70046',GradientType=1 );
+.text-gradient {
+    -webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .theme-light {
@@ -57,10 +55,16 @@
         @apply .gradient .text-white ;
     }
 }
-.btn-gray {
-    @apply .text-default .border-2 .border-accent .bg-transparent ;
+a.button {
     &:hover {
-        @apply .gradient .border-gradient .text-white ;
+        -webkit-text-fill-color: white;
+        @apply .text-white ;
+    }
+}
+.btn-gray {
+    @apply .text-default .border-2 .border-accent .bg-card ;
+    &:hover {
+        @apply .gradient .text-white ;
     }
 }
 .card { @apply .bg-card .p-5 .rounded-lg .shadow ; }
@@ -71,12 +75,11 @@
     color: var(--default-alt-text-color);
     letter-spacing: .1rem;
 }
-a:hover { @apply .text-accent .no-underline ; }
 
 .dropdown-button {
     @apply .text-default ;
     &:hover {
-        @apply .text-accent .no-underline ;
+        @apply .gradient .text-gradient .no-underline ;
     }
 }
 .dropdown-item {
