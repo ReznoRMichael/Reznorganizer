@@ -33,10 +33,11 @@ TDD + MVC + OOP: PHP, Laravel, Vue, SQLite, Tailwind. A simple Test-Driven Devel
 * SVG
 * XAMPP
 
-## To do list and fix bugs for the future
+## Personal to do list and fix bugs for the future
 
-* Bug: Vue modal create project - when there are empty tasks 'body' in the form (except first and last) it gives an error when submitting the form (try a different algorithm for removing empty tasks from array)
+* ~~Bug: Vue modal create project - when there are empty tasks 'body' in the form (except first and last) it gives an error when submitting the form (try a different algorithm for removing empty tasks from array)~~
 * Feature: Vue modal create project - make mobile-friendly
+* Feature/Cosmetic: Add Markdown processing for the notes area
 * ~~Code Optimization: Vue modal create project - do not allow to add more than 1 empty task input~~
 * Bug: A project owner should not be able to invite himself to a project
 * Bug: A project owner should not be able to invite the same user multiple times to a project
@@ -45,7 +46,7 @@ TDD + MVC + OOP: PHP, Laravel, Vue, SQLite, Tailwind. A simple Test-Driven Devel
 * ~~Feature: Make a front/landing page with more info~~
 * ~~Feature: Add more information to the /home page + link to all projects~~
 * Code Optimization: Move the style and theme components to separate files
-* Feature: Confirmation box for deleting a project
+* Feature: Confirmation box for deleting a project (Vue?)
 * Feature: A project owner can remove invited users from a project
 * Feature: Add Google reCaptcha to registration form
 * Feature: Add account creation e-mail sending with confirmation link
@@ -54,7 +55,9 @@ TDD + MVC + OOP: PHP, Laravel, Vue, SQLite, Tailwind. A simple Test-Driven Devel
 * Feature: Notes textarea automatic resize (fit to content)
 * Feature: Add date for first entry creation
 * ~~Cosmetic: Add gradient to Tailwind/SASS~~
-* Cosmetic: Add gradient on alternative button border hover
+* ~~Cosmetic: Fixed no hover on Delete button/text~~
+* Cosmetic: Add gradient on alternative button border hover (Cancel)
+* Bug: Restrict username length and make sure sanitization is working
 
 ## Contact
 

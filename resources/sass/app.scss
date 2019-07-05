@@ -67,6 +67,12 @@ a.button {
         @apply .gradient .text-white ;
     }
 }
+.btn-delete {
+    @apply .text-xs ;
+    &:hover {
+        @apply .gradient .text-gradient .no-underline ;
+    }
+}
 .card { @apply .bg-card .p-5 .rounded-lg .shadow ; }
 .reznor-logo {
     font-family: 'Inconsolata', monospace;

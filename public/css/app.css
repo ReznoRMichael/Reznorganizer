@@ -7834,6 +7834,19 @@ a.button:hover {
   color: #fff;
 }
 
+.btn-delete {
+  font-size: 0.75rem;
+}
+
+.btn-delete:hover {
+  background: #ff6600;
+  background: linear-gradient(to right, #ff6600 0%, #b70046 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff6600", endColorstr="#b70046",GradientType=1 );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
 .card {
   background-color: var(--card-background-color);
   padding: 1.25rem;

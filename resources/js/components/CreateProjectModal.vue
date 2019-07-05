@@ -80,12 +80,28 @@ export default {
             }
         },
         async submit() {
-            // prevent adding additional task inputs if the last input is empty
-            if( (this.form.tasks.length > 1) && (this.form.tasks[ this.form.tasks.length-1 ].body == '') ) 
+
+            // delete empty tasks from the array (if there are any)
+            if( this.form.tasks.length )
             {
-                this.form.tasks.pop();
+                for(var i=0; i < this.form.tasks.length; i++)
+                {
+                    if(this.form.tasks[ i ].body == '')
+                    {
+                        this.form.tasks.splice(i, 1);
+                        // if a task was deleted, i also has to be decremented!
+                        i--;
+                    }
+                }
             }
-            // prevent posting the tasks to SQL if the last task input is empty
+
+            // always add an empty task, in case the above loop deleted everything
+            if( !this.form.tasks.length )
+            {
+                this.form.tasks.push( { body: '' } );
+            }
+            
+            // prevent posting the tasks to SQL (form.originalData) if the last task input is empty
             if(!this.form.tasks[0].body) delete this.form.originalData.tasks;
 
             this.form.submit('/reznorganizer/public/projects')

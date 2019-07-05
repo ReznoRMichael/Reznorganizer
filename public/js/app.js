@@ -1942,14 +1942,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _submit = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                // prevent adding additional task inputs if the last input is empty
-                if (this.form.tasks.length > 1 && this.form.tasks[this.form.tasks.length - 1].body == '') {
-                  this.form.tasks.pop();
-                } // prevent posting the tasks to SQL if the last task input is empty
+                // delete empty tasks from the array (if there are any)
+                if (this.form.tasks.length) {
+                  for (i = 0; i < this.form.tasks.length; i++) {
+                    if (this.form.tasks[i].body == '') {
+                      this.form.tasks.splice(i, 1); // if a task was deleted, i also has to be decremented!
+
+                      i--;
+                    }
+                  }
+                } // always add an empty task, in case the above loop deleted everything
+
+
+                if (!this.form.tasks.length) {
+                  this.form.tasks.push({
+                    body: ''
+                  });
+                } // prevent posting the tasks to SQL (form.originalData) if the last task input is empty
 
 
                 if (!this.form.tasks[0].body) delete this.form.originalData.tasks;
@@ -1957,7 +1971,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return location = response.data.projectpath;
                 });
 
-              case 3:
+              case 4:
               case "end":
                 return _context.stop();
             }
