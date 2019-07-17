@@ -8,10 +8,10 @@ TDD + MVC + OOP: PHP, Laravel, Vue, SQLite, Tailwind. A simple Test-Driven Devel
 
 ## Things Learned
 
-* TDD (Test-Driven Development) - PHPUnit testing (42 tests, 89 assertions)
+* TDD (Test-Driven Development) - PHPUnit testing (42 unit tests, 89 assertions)
 * Vue, SASS, NPM, Webpack, Laravel Mix, Tailwind
-* Using url(), action() or route() helpers instead of hardcoding URLs
-* Creating own code snippets in Visual Studio Code
+* Using url(), action() or route() helpers instead of hardcoding URLs (outside knowledge)
+* Creating own code snippets in Visual Studio Code (outside knowledge)
 * Creating auto-loaded aliases for PHPUnit commands in Windows CMD/PATH (outside knowledge)
 * Creating/editing/exporting/converting SVG files (CorelDRAW + Inkscape, outside knowledge)
 * Displaying and solving HTTP 500 errors while deploying on server (index.php - error_reporting(E_ALL); outside knowledge)
