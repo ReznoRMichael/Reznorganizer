@@ -28,8 +28,8 @@
             
             <ul class="list-disc list-inside mx-auto text-left">
                 <li>Create/Edit/Delete new entries with short descriptions</li>
-                <li>Add tasks to entries</li>
-                <li>Mark tasks as completed</li>
+                <li>Add/Edit/Delete tasks inside entries</li>
+                <li>Mark tasks as completed or not completed</li>
                 <li>Add additional notes to entries</li>
                 <li>View update history for each entry</li>
                 <li>Invite other registered users to their entries</li>

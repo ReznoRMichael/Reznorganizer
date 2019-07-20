@@ -52,18 +52,26 @@
                         <form action="{{ $task->path() }}" method="post">
                             @method('PATCH')
                             @csrf
-                            <div class="flex items-center">
-                            <input type="text" name="body" value="{{ $task->body }}"
-                                class="w-full bg-card {{ $task->completed ? 'text-default-muted line-through' : '' }}">
-                                <div class="checkbox">
-                                    <label class="checkbox-label">
-                                        <input type="checkbox" name="completed"
-                                            onchange="this.form.submit();" {{ $task->completed ? 'checked' : '' }}>
-                                            <span class="checkmark"></span>
-                                    </label>
-                                </div>
+                            <div class="flex items-center justify-between">
+                                <input type="text" name="body" value="{{ $task->body }}"
+                                    class="w-full bg-card {{ $task->completed ? 'text-default-muted line-through' : '' }}">
+
+                                    <div class="checkbox">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="completed"
+                                                onchange="this.form.submit();" {{ $task->completed ? 'checked' : '' }}>
+                                                <span class="checkmark"></span>
+                                        </label>
+                                    </div>
                             </div>
                         </form>
+                        @can('manage', $project)
+                            <form action="{{ $task->path() }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn-delete">Delete Task</button>
+                            </form>
+                        @endcan
                     </div>
                 @endforeach
                     <form action="{{ $project->path().'/tasks' }}" method="post">

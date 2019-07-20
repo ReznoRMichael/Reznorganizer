@@ -1,1 +1,1 @@
-{{ ucwords($activity->user->name) }} completed "{{ $activity->subject->body }}"
+{{ ucwords($activity->user->name) }} completed {{ isset($activity->subject->body) ? $activity->subject->body : 'some task' }}

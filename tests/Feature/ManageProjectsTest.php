@@ -40,29 +40,44 @@ class ManageProjectsTest extends TestCase
         $attributes = factory(Project::class)->raw();
         // check if the user can view their project
         $this->followingRedirects()->post( action('ProjectsController@index'), $attributes)
-            ->assertSee($attributes['title'])
-            ->assertSee($attributes['description'])
-            ->assertSee($attributes['notes']);
+            ->assertSee( $attributes['title'] )
+            ->assertSee( $attributes['description'] )
+            ->assertSee( $attributes['notes'] );
     }
 
     /** @test */
     function tasks_can_be_included_as_part_of_new_project_creation()
     {
-        // $this->withoutExceptionHandling();
+        //$this->withoutExceptionHandling();
         $this -> signIn();
 
         $attributes = factory(Project::class)->raw();
 
         $attributes['tasks'] = [
             ['body' => 'Task 1'],
-            ['body' => 'Task 2'],
-            ['body' => ''],
-            ['body' => '']
+            ['body' => 'Task 2']
         ];
 
         $this->post( action('ProjectsController@index'), $attributes );
         
         $this->assertCount( 2, Project::first()->tasks );
+    }
+
+    /** @test */
+    function tasks_can_be_deleted_from_a_project()
+    {
+        $this->withoutExceptionHandling();
+        // create a project
+        $project = ProjectFactory::withTasks(1)->create();
+        $task = $project->tasks->first()->path();
+
+        // being a project owner
+        $this->actingAs($project->owner)
+            // delete the task
+            ->delete($task)
+            ->assertRedirect( $project->path() );
+        
+        $this -> assertDatabaseMissing( 'tasks', $project->tasks[0]->only('id') );
     }
 
     /** @test */
@@ -75,7 +90,7 @@ class ManageProjectsTest extends TestCase
         // when I visit my dashboard
         $this->get( action('ProjectsController@index') )
         //I should see that project
-            ->assertSee( $project->title );
+            ->assertSee( str_limit($project->title, 35) );
     }
 
     /** @test */

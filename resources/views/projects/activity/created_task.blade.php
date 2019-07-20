@@ -1,1 +1,1 @@
-{{ ucwords($activity->user->name) }} added "{{ $activity->subject->body }}"
+{{ ucwords($activity->user->name) }} added {{ isset($activity->subject->body) ? $activity->subject->body : 'some task' }}

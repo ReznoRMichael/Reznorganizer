@@ -8,7 +8,7 @@ TDD + MVC + OOP: PHP, Laravel, Vue, SQLite, Tailwind. A simple Test-Driven Devel
 
 ## Things Learned
 
-* TDD (Test-Driven Development) - PHPUnit testing (42 unit tests, 89 assertions)
+* TDD (Test-Driven Development) - PHPUnit testing (43 unit tests, 93 assertions)
 * Vue, SASS, NPM, Webpack, Laravel Mix, Tailwind
 * Using url(), action() or route() helpers instead of hardcoding URLs (outside knowledge)
 * Creating own code snippets in Visual Studio Code (outside knowledge)
@@ -41,7 +41,9 @@ TDD + MVC + OOP: PHP, Laravel, Vue, SQLite, Tailwind. A simple Test-Driven Devel
 * ~~Code Optimization: Vue modal create project - do not allow to add more than 1 empty task input~~
 * Bug: A project owner should not be able to invite himself to a project
 * Bug: A project owner should not be able to invite the same user multiple times to a project
-* Feature: A user can delete tasks from a project
+* ~~Feature: The project owner can delete tasks from a project~~
+* Bug: The user invited to a project cannot delete tasks
+* Bug: Activity only shows the project owner (RecordsActivity.php, line 61)
 * ~~Feature: Style the checkboxes with CSS~~
 * ~~Feature: Make a front/landing page with more info~~
 * ~~Feature: Add more information to the /home page + link to all projects~~

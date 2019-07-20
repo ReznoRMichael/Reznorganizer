@@ -35,4 +35,20 @@ class ProjectTasksController extends Controller
 
         return redirect( $project->path() );
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Project  $project
+     * @param  \App\Task  $task
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Project $project, Task $task)
+    {
+        $this->authorize('manage', $task->project);
+
+        $task->delete();
+
+        return redirect( $project->path() );
+    }
 }

@@ -1,0 +1,1 @@
+{{ ucwords($activity->user->name) }} deleted a task

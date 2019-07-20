@@ -119,5 +119,6 @@ class TriggerActivityTest extends TestCase
 
         $this->assertCount(3, $project->activity);
 
+        $this->assertEquals('deleted_task', $project->activity->last()->description);
     }
 }

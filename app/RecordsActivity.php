@@ -33,7 +33,8 @@ trait RecordsActivity
 
     protected function activityDescription( $description )
     {
-        return "{$description}_".strtolower( class_basename($this) ); // created_task
+        // base name for the activity (e.g. created_task )
+        return "{$description}_".strtolower( class_basename($this) );
     }
 
     /**
